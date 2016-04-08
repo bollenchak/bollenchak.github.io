@@ -1,0 +1,624 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="多线程," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="Java线程类也是一个object类,它的实例都继承自java.lang.Thread或其子类。 
+可以用如下方式用java中创建一个线程:1Tread thread = new Thread();
+执行该线程可以调用该线程的start()方法:1thread.start();
+在上面的例子中，我们并没有为线程编写运行代码，因此调用该方法后线程就终止了。
+编写线程运行时执行的代码有两种方式：一种是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何创建并运行java线程">
+<meta property="og:url" content="http://bollenchak.github.io/2016/01/26/java-multi-thread/index.html">
+<meta property="og:site_name" content="Bollen's Notes">
+<meta property="og:description" content="Java线程类也是一个object类,它的实例都继承自java.lang.Thread或其子类。 
+可以用如下方式用java中创建一个线程:1Tread thread = new Thread();
+执行该线程可以调用该线程的start()方法:1thread.start();
+在上面的例子中，我们并没有为线程编写运行代码，因此调用该方法后线程就终止了。
+编写线程运行时执行的代码有两种方式：一种是">
+<meta property="og:updated_time" content="2016-02-27T03:21:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何创建并运行java线程">
+<meta name="twitter:description" content="Java线程类也是一个object类,它的实例都继承自java.lang.Thread或其子类。 
+可以用如下方式用java中创建一个线程:1Tread thread = new Thread();
+执行该线程可以调用该线程的start()方法:1thread.start();
+在上面的例子中，我们并没有为线程编写运行代码，因此调用该方法后线程就终止了。
+编写线程运行时执行的代码有两种方式：一种是">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 如何创建并运行java线程 | Bollen's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-75849261-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Bollen's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Write Technology Record</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                如何创建并运行java线程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-26T18:53:21+08:00" content="2016-01-26">
+              2016-01-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/26/java-multi-thread/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/26/java-multi-thread/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><code>Java</code>线程类也是一个<code>object</code>类,它的实例都继承自<code>java.lang.Thread</code>或其子类。 </p>
+<p>可以用如下方式用<code>java</code>中创建一个线程:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Tread thread = <span class="keyword">new</span> Thread();</span><br></pre></td></tr></table></figure></p>
+<p>执行该线程可以调用该线程的<code>start()</code>方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">thread.start();</span><br></pre></td></tr></table></figure></p>
+<p>在上面的例子中，我们并没有为线程编写运行代码，因此调用该方法后线程就终止了。</p>
+<p>编写线程运行时执行的代码有两种方式：一种是<strong>创建<code>Thread</code>子类的一个实例并重写<code>run</code>方法</strong>，第二种是<strong>创建类的时候实现<code>Runnable</code>接口</strong>。接下来我们会具体讲解这两种方法：<br><a id="more"></a></p>
+<h3 id="创建Thread的子类"><a href="#创建Thread的子类" class="headerlink" title="创建Thread的子类"></a>创建<code>Thread</code>的子类</h3><h4 id="普通类继承Thread"><a href="#普通类继承Thread" class="headerlink" title="普通类继承Thread"></a>普通类继承<code>Thread</code></h4><p>创建<code>Thread</code>子类的一个实例并重写<code>run</code>方法，<code>run</code>方法会在调用<code>start()</code>方法之后被执行。<br>例子如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">  	System.out.println(<span class="string">"MyThread running"</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以用如下方式创建并运行上述<code>Thread</code>子类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyThread myThread = <span class="keyword">new</span> MyThread();</span><br><span class="line">myTread.start();</span><br></pre></td></tr></table></figure></p>
+<p>一旦线程启动后<code>start</code>方法就会立即返回，而不会等待到<code>run</code>方法执行完毕才返回。就好像<code>run</code>方法是在另外一个<code>cpu</code>上执行一样。当<code>run</code>方法执行后，将会打印出字符串<code>MyThread running</code>。</p>
+<h4 id="匿名子类继承Thread"><a href="#匿名子类继承Thread" class="headerlink" title="匿名子类继承Thread"></a>匿名子类继承<code>Thread</code></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Thread thread = <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">  	System.out.println(<span class="string">"Thread Running"</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;;</span><br><span class="line">thread.start();</span><br></pre></td></tr></table></figure>
+<p>当新的线程的<code>run</code>方法执行以后，计算机将会打印出字符串<code>”Thread Running”</code>。</p>
+<h3 id="实现Runnable接口"><a href="#实现Runnable接口" class="headerlink" title="实现Runnable接口"></a>实现<code>Runnable</code>接口</h3><h4 id="普通子类Runnable接口"><a href="#普通子类Runnable接口" class="headerlink" title="普通子类Runnable接口"></a>普通子类<code>Runnable</code>接口</h4><p>第二种编写线程执行代码的方式是新建一个实现了<code>java.lang.Runnable</code>接口的类的实例，实例中的方法可以被线程调用。下面给出例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"MyRunnable running"</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了使线程能够执行<code>run()</code>方法，需要在<code>Thread</code>类的构造函数中传入 <code>MyRunnable</code>的实例对象。示例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Thread thread = <span class="keyword">new</span> Thread(<span class="keyword">new</span> MyRunnable());</span><br><span class="line">thread.start();</span><br></pre></td></tr></table></figure>
+<p>当线程运行时，它将会调用实现了<code>Runnable</code>接口的<code>run</code>方法。上例中将会打印出<code>”MyRunnable running”</code>。</p>
+<h4 id="匿名类实现Runnable接口"><a href="#匿名类实现Runnable接口" class="headerlink" title="匿名类实现Runnable接口"></a>匿名类实现<code>Runnable</code>接口</h4><p>同样，也可以创建一个实现了<code>Runnable</code>接口的匿名类，如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Runnable myRunnable = <span class="keyword">new</span> Runnable()&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">     System.out.println(<span class="string">"Runnable running"</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;;</span><br><span class="line">Thread thread = <span class="keyword">new</span> Thread(myRunnable);</span><br><span class="line">thread.start();</span><br></pre></td></tr></table></figure></p>
+<p>创建子类还是实现<code>Runnable</code>接口？</p>
+<p>对于这两种方式哪种好并没有一个确定的答案，它们都能满足要求。就我个人意见，我更倾向于实现<code>Runnable</code>接口这种方法。因为线程池可以有效的管理实现了<code>Runnable</code>接口的线程，如果线程池满了，新的线程就会排队等候执行，直到线程池空闲出来为止。而如果线程是通过实现Thread子类实现的，这将会复杂一些。</p>
+<p>有时我们要同时融合实现<code>Runnable</code>接口和<code>Thread</code>子类两种方式。例如，实现了<code>Thread</code>子类的实例可以执行多个实现了<code>Runnable</code>接口的线程。一个典型的应用就是线程池。</p>
+<p>常见错误：调用<code>run()</code>方法而非<code>start()</code>方法</p>
+<p>创建并运行一个线程所犯的常见错误是调用线程的<code>run()</code>方法而非<code>start()</code>方法，如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Thread newThread = <span class="keyword">new</span> Thread(MyRunnable());</span><br><span class="line">newThread.run();  <span class="comment">//should be start();</span></span><br></pre></td></tr></table></figure>
+<p>起初你并不会感觉到有什么不妥，因为<code>run()</code>方法的确如你所愿的被调用了。但是，事实上,<code>run()</code>方法并非是由刚创建的新线程所执行的，而是被创建新线程的当前线程所执行了。也就是被执行上面两行代码的线程所执行的。想要让创建的新线程执行<code>run()</code>方法，必须调用新线程的<code>start</code>方法。</p>
+<h3 id="线程名"><a href="#线程名" class="headerlink" title="线程名"></a>线程名</h3><p>当创建一个线程的时候，可以给线程起一个名字。它有助于我们区分不同的线程。</p>
+<p>例如：如果有多个线程写入<code>System.out</code>，我们就能够通过线程名容易的找出是哪个线程正在输出。</p>
+<p>例子如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MyRunnable runnable = <span class="keyword">new</span> MyRunnable();</span><br><span class="line">Thread thread = <span class="keyword">new</span> Thread(runnable, <span class="string">"New Thread"</span>);</span><br><span class="line">thread.start();</span><br><span class="line">System.out.println(thread.getName());</span><br></pre></td></tr></table></figure></p>
+<p>需要注意的是，因为<code>MyRunnable</code>并非<code>Thread</code>的子类，所以<code>MyRunnable</code>类并没有<code>getName()</code>方法。可以通过以下方式得到当前线程的引用：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Thread.currentThread();</span><br></pre></td></tr></table></figure></p>
+<p>因此，通过如下代码可以得到当前线程的名字：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String threadName = Thread.currentThread().getName();</span><br></pre></td></tr></table></figure></p>
+<h3 id="线程代码举例"><a href="#线程代码举例" class="headerlink" title="线程代码举例"></a>线程代码举例</h3><p>这里是一个小小的例子。首先输出执行<code>main()</code>方法线程名字。这个线程<code>JVM</code>分配的。然后开启<code>10</code>个线程，命名为<code>1~10</code>。每个线程输出自己的名字后就退出。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadExample</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">     System.out.println(Thread.currentThread().getName());</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++)&#123;</span><br><span class="line">         <span class="keyword">new</span> Thread(<span class="string">""</span> + i)&#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">             System.out.println(<span class="string">"Thread: "</span> + getName() + <span class="string">"running"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">         &#125;.start();</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，尽管启动线程的顺序是有序的，但是执行的顺序并非是有序的。也就是说，<code>1</code>号线程并不一定是第一个将自己名字输出到控制台的线程。这是因为线程是并行执行而非顺序的。<code>Jvm</code>和操作系统一起决定了线程的执行顺序，他和线程的启动顺序并非一定是一致的。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/多线程/" rel="tag">#多线程</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/28/mybatis-merge-into/" rel="prev" title="Mybatis 批量 foreach merge into用法">
+                Mybatis 批量 foreach merge into用法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/01/26/java-multi-thread/"
+           data-title="如何创建并运行java线程" data-url="http://bollenchak.github.io/2016/01/26/java-multi-thread/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars3.githubusercontent.com/u/5812295?v=3&s=460"
+               alt="Bollen" />
+          <p class="site-author-name" itemprop="name">Bollen</p>
+          <p class="site-description motion-element" itemprop="description">日拱一卒，不求速进</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Thread的子类"><span class="nav-number">1.</span> <span class="nav-text">创建Thread的子类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#普通类继承Thread"><span class="nav-number">1.1.</span> <span class="nav-text">普通类继承Thread</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匿名子类继承Thread"><span class="nav-number">1.2.</span> <span class="nav-text">匿名子类继承Thread</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现Runnable接口"><span class="nav-number">2.</span> <span class="nav-text">实现Runnable接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#普通子类Runnable接口"><span class="nav-number">2.1.</span> <span class="nav-text">普通子类Runnable接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匿名类实现Runnable接口"><span class="nav-number">2.2.</span> <span class="nav-text">匿名类实现Runnable接口</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程名"><span class="nav-number">3.</span> <span class="nav-text">线程名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程代码举例"><span class="nav-number">4.</span> <span class="nav-text">线程代码举例</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bollen</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/vendors/jquery-scrollintoview/jquery.scrollintoview.min.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"bollen"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
