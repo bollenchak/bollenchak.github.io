@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Effective Java,instance," />
 
 
 
@@ -57,15 +57,18 @@
 
 
 
-<meta name="description" content="日拱一卒，不求速进">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Bollen's Notes">
-<meta property="og:url" content="http://bollenchak.github.io/archives/2016/index.html">
+<meta name="description">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Effective Java - create and destroy instance">
+<meta property="og:url" content="http://bollenchak.github.io/2016/09/02/EffectiveJava2 note - 1/index.html">
 <meta property="og:site_name" content="Bollen's Notes">
-<meta property="og:description" content="日拱一卒，不求速进">
+<meta property="og:description">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/4bfce457gw1f7fbkum8o0j21kw0ign9r.jpg">
+<meta property="og:updated_time" content="2016-09-02T08:27:24.625Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Bollen's Notes">
-<meta name="twitter:description" content="日拱一卒，不求速进">
+<meta name="twitter:title" content="Effective Java - create and destroy instance">
+<meta name="twitter:description">
+<meta name="twitter:image" content="http://ww2.sinaimg.cn/large/4bfce457gw1f7fbkum8o0j21kw0ign9r.jpg">
 
 
 
@@ -83,7 +86,7 @@
   };
 </script>
 
-  <title> 归档 | Bollen's Notes </title>
+  <title> Effective Java - create and destroy instance | Bollen's Notes </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -113,7 +116,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -191,214 +194,141 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 5 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/02/EffectiveJava2 note - 1/" itemprop="url">
-              
-                <span itemprop="name">Effective Java - create and destroy instance</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-02T16:25:21+08:00"
-              content="2016-09-02" >
-          09-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/04/20/eclipse-jadClipse-decompiler-config/" itemprop="url">
-              
-                <span itemprop="name">Eclipse反编译工具Jad.exe及插件JadClipse配置</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-04-20T20:33:19+08:00"
-              content="2016-04-20" >
-          04-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/01/28/双网卡双网段路由设置/" itemprop="url">
-              
-                <span itemprop="name">双网卡双网段路由设置同时访问内外网</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-01-28T10:38:19+08:00"
-              content="2016-01-28" >
-          01-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/01/28/mybatis-merge-into/" itemprop="url">
-              
-                <span itemprop="name">Mybatis 批量 foreach merge into用法</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-01-28T10:00:21+08:00"
-              content="2016-01-28" >
-          01-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/01/26/java-multi-thread/" itemprop="url">
-              
-                <span itemprop="name">如何创建并运行java线程</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-01-26T18:53:21+08:00"
-              content="2016-01-26" >
-          01-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
 
   
+  
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Effective Java - create and destroy instance
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-02T16:25:21+08:00" content="2016-09-02">
+              2016-09-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/02/EffectiveJava2 note - 1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/02/EffectiveJava2 note - 1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://ww2.sinaimg.cn/large/4bfce457gw1f7fbkum8o0j21kw0ign9r.jpg" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Effective-Java/" rel="tag">#Effective Java</a>
+          
+            <a href="/tags/instance/" rel="tag">#instance</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/20/eclipse-jadClipse-decompiler-config/" rel="next" title="Eclipse反编译工具Jad.exe及插件JadClipse配置">
+                <i class="fa fa-chevron-left"></i> Eclipse反编译工具Jad.exe及插件JadClipse配置
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -406,6 +336,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/02/EffectiveJava2 note - 1/"
+           data-title="Effective Java - create and destroy instance" data-url="http://bollenchak.github.io/2016/09/02/EffectiveJava2 note - 1/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -425,8 +363,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars3.githubusercontent.com/u/5812295?v=3&s=460"
@@ -484,6 +431,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -575,11 +533,10 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/vendors/jquery-scrollintoview/jquery.scrollintoview.min.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
 
 
   
