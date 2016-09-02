@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Effective Java,instance," />
 
 
 
@@ -57,15 +57,57 @@
 
 
 
-<meta name="description" content="日拱一卒，不求速进">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Bollen's Notes">
-<meta property="og:url" content="http://bollenchak.github.io/index.html">
+<meta name="description" content="静态工厂方法代替构造器优点
+包含名称易于阅读
+避免创建不必要的重复对象
+可以返回原返回类型的子类型，类型更加灵活
+创建参数化类型实例代码更简洁
+
+缺点
+静态方法所在类没有public或者protected的构造器无法子类化
+实际上和其他静态方法没有区别
+
+多个构造器参数考虑构建器
+静态工厂和构造器不能很好地扩展到大量的可选参数
+重叠构造器模式可行参数多时，难写且阅读困难
+构造JavaBean过程中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Effective Java - 创建和销毁对象">
+<meta property="og:url" content="http://bollenchak.github.io/2016/09/02/EffectiveJava2 Read Note 1/index.html">
 <meta property="og:site_name" content="Bollen's Notes">
-<meta property="og:description" content="日拱一卒，不求速进">
+<meta property="og:description" content="静态工厂方法代替构造器优点
+包含名称易于阅读
+避免创建不必要的重复对象
+可以返回原返回类型的子类型，类型更加灵活
+创建参数化类型实例代码更简洁
+
+缺点
+静态方法所在类没有public或者protected的构造器无法子类化
+实际上和其他静态方法没有区别
+
+多个构造器参数考虑构建器
+静态工厂和构造器不能很好地扩展到大量的可选参数
+重叠构造器模式可行参数多时，难写且阅读困难
+构造JavaBean过程中">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/4bfce457gw1f7fbkum8o0j21kw0ign9r.jpg">
+<meta property="og:updated_time" content="2016-09-02T09:11:26.497Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Bollen's Notes">
-<meta name="twitter:description" content="日拱一卒，不求速进">
+<meta name="twitter:title" content="Effective Java - 创建和销毁对象">
+<meta name="twitter:description" content="静态工厂方法代替构造器优点
+包含名称易于阅读
+避免创建不必要的重复对象
+可以返回原返回类型的子类型，类型更加灵活
+创建参数化类型实例代码更简洁
+
+缺点
+静态方法所在类没有public或者protected的构造器无法子类化
+实际上和其他静态方法没有区别
+
+多个构造器参数考虑构建器
+静态工厂和构造器不能很好地扩展到大量的可选参数
+重叠构造器模式可行参数多时，难写且阅读困难
+构造JavaBean过程中">
+<meta name="twitter:image" content="http://ww2.sinaimg.cn/large/4bfce457gw1f7fbkum8o0j21kw0ign9r.jpg">
 
 
 
@@ -83,7 +125,7 @@
   };
 </script>
 
-  <title> Bollen's Notes </title>
+  <title> Effective Java - 创建和销毁对象 | Bollen's Notes </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -113,9 +155,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -192,9 +232,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -214,10 +254,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/09/02/EffectiveJava2 Read Note 1/" itemprop="url">
-                  Effective Java - 创建和销毁对象
-                </a>
+                Effective Java - 创建和销毁对象
               
             
           </h1>
@@ -282,9 +319,7 @@
       
 
       
-        
-          
-            <h2 id="静态工厂方法代替构造器"><a href="#静态工厂方法代替构造器" class="headerlink" title="静态工厂方法代替构造器"></a>静态工厂方法代替构造器</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+        <h2 id="静态工厂方法代替构造器"><a href="#静态工厂方法代替构造器" class="headerlink" title="静态工厂方法代替构造器"></a>静态工厂方法代替构造器</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
 <li>包含名称易于阅读</li>
 <li>避免创建不必要的重复对象</li>
 <li>可以返回原返回类型的子类型，类型更加灵活</li>
@@ -373,522 +408,53 @@
 </ul>
 <p><img src="http://ww2.sinaimg.cn/large/4bfce457gw1f7fbkum8o0j21kw0ign9r.jpg" alt=""></p>
 
-          
-        
       
     </div>
 
     <div>
       
+        
+      
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/20/eclipse-jadClipse-decompiler-config/" itemprop="url">
-                  Eclipse反编译工具Jad.exe及插件JadClipse配置
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-20T20:33:19+08:00" content="2016-04-20">
-              2016-04-20
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/IDE/" itemprop="url" rel="index">
-                    <span itemprop="name">IDE</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
+            <a href="/tags/Effective-Java/" rel="tag">#Effective Java</a>
           
-
+            <a href="/tags/instance/" rel="tag">#instance</a>
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/20/eclipse-jadClipse-decompiler-config/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/20/eclipse-jadClipse-decompiler-config/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h2 id="下载Eclipse插件及反编译程序"><a href="#下载Eclipse插件及反编译程序" class="headerlink" title="下载Eclipse插件及反编译程序"></a>下载Eclipse插件及反编译程序</h2><ul>
-<li><a href="http://jadclipse.sourceforge.net/wiki/index.php/Main_Page#Download">JadClipse</a></li>
-<li><a href="http://www.varaneckas.com/jad">Jad</a></li>
-</ul>
-<h2 id="配置Jad-exe"><a href="#配置Jad-exe" class="headerlink" title="配置Jad.exe"></a>配置Jad.exe</h2><p>  将<code>Jad.exe</code>复制到<code>JDK</code>安装目录下的<code>bin</code>文件夹下</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/20/eclipse-jadClipse-decompiler-config/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/20/eclipse-jadClipse-decompiler-config/" rel="next" title="Eclipse反编译工具Jad.exe及插件JadClipse配置">
+                <i class="fa fa-chevron-left"></i> Eclipse反编译工具Jad.exe及插件JadClipse配置
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/28/双网卡双网段路由设置/" itemprop="url">
-                  双网卡双网段路由设置同时访问内外网
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-28T10:38:19+08:00" content="2016-01-28">
-              2016-01-28
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/网络配置/" itemprop="url" rel="index">
-                    <span itemprop="name">网络配置</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/01/28/双网卡双网段路由设置/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/28/双网卡双网段路由设置/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><p>电脑通过VPN访问公司服务器的内网时无法访问互联网</p>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>如果你电脑同时装了双网卡（包括无线网卡），且分别属于不直接相连的网段，此时如果在两个属性里都设了网关，<code>Windows</code>只认其中一个导致两<br>个网段不能同时上。由于<code>windows</code>系统不支持共用路由问题（<code>server</code>级别除外），所以在同一时间不能同时上两个网。</p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p><code>Windows</code>也是有路由表的，只不过大家平时上网的时候大多数是用一块网卡，很少用到路由概念</p>
-<p>如果是两块网卡，那就有两条默认路由，虽然两条默认路由的有着不同的<code>Metric</code>（Metric即跃点数，值越小优先级越高），然而windows还没聪明到能够首辨认哪条路由到外网网关，哪条路由到内网网关。它所能做的就是找一条路由作为全部数据包的出口，至于选择的对错与否，那它就不再过问了。</p>
-<p>那怎么办呢？办法就是人为操控windows的路由表，来告诉它，哪个网卡ip是走哪个网关。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/28/双网卡双网段路由设置/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/28/mybatis-merge-into/" itemprop="url">
-                  Mybatis 批量 foreach merge into用法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-28T10:00:21+08:00" content="2016-01-28">
-              2016-01-28
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/01/28/mybatis-merge-into/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/28/mybatis-merge-into/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="业务要求"><a href="#业务要求" class="headerlink" title="业务要求"></a>业务要求</h3><blockquote>
-<p>批量插入时间价格表，如果某个套餐的某天的价格存在，则更新，不存在则插入</p>
-</blockquote>
-<h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><ul>
-<li><code>oracle 9i</code>及其以后版本支持的<code>merge into</code>语句，用于实现<code>insertOrUpdate</code>的功能</li>
-<li><code>mybatis</code>的动态<code>SQL</code> 语法<code>foreach</code>循环插入，待插入的实体<code>bean</code>的<code>List</code>通过查询数据库<code>dual</code>形成表，通过<code>foreach</code>的<code>separator</code>属性设置每次循环的隔离词为<code>union</code>连接每次形成的表为一个总表</li>
-<li>总表于条件匹配，符合条件update，不符合insert</li>
-<li>更新的数据来源于<code>java.util.List</code>中的实体的属性 </li>
-</ul>
-<h3 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h3><p>采用<code>union</code>  拼接<code>sql</code>,导致问题<code>sql</code>过长，耗时，性能不好，且达到一定量会超出<code>sql</code>长度限制，不推荐；<br> 一般<code>20</code>字段以内的表新增，数据<code>2000</code>条以内可用，经过测试。</p>
-<p><strong>注意</strong> <code>union all</code>会把所有结果集拼接在一起，<code>union</code>也会拼接所有结果，但会去除重复<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/28/mybatis-merge-into/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/26/java-multi-thread/" itemprop="url">
-                  如何创建并运行java线程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-26T18:53:21+08:00" content="2016-01-26">
-              2016-01-26
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/01/26/java-multi-thread/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/26/java-multi-thread/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><code>Java</code>线程类也是一个<code>object</code>类,它的实例都继承自<code>java.lang.Thread</code>或其子类。 </p>
-<p>可以用如下方式用<code>java</code>中创建一个线程:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Tread thread = <span class="keyword">new</span> Thread();</span><br></pre></td></tr></table></figure></p>
-<p>执行该线程可以调用该线程的<code>start()</code>方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">thread.start();</span><br></pre></td></tr></table></figure></p>
-<p>在上面的例子中，我们并没有为线程编写运行代码，因此调用该方法后线程就终止了。</p>
-<p>编写线程运行时执行的代码有两种方式：一种是<strong>创建<code>Thread</code>子类的一个实例并重写<code>run</code>方法</strong>，第二种是<strong>创建类的时候实现<code>Runnable</code>接口</strong>。接下来我们会具体讲解这两种方法：<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/26/java-multi-thread/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -896,6 +462,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/02/EffectiveJava2 Read Note 1/"
+           data-title="Effective Java - 创建和销毁对象" data-url="http://bollenchak.github.io/2016/09/02/EffectiveJava2 Read Note 1/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -915,8 +489,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars3.githubusercontent.com/u/5812295?v=3&s=460"
@@ -974,6 +557,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#静态工厂方法代替构造器"><span class="nav-number">1.</span> <span class="nav-text">静态工厂方法代替构造器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多个构造器参数考虑构建器"><span class="nav-number">2.</span> <span class="nav-text">多个构造器参数考虑构建器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用私有构造器或枚举类型强化单例属性"><span class="nav-number">3.</span> <span class="nav-text">用私有构造器或枚举类型强化单例属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#私有构造器"><span class="nav-number">3.1.</span> <span class="nav-text">私有构造器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单元素枚举类型"><span class="nav-number">3.2.</span> <span class="nav-text">单元素枚举类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免使用终结方法"><span class="nav-number">4.</span> <span class="nav-text">避免使用终结方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#私有构造器强化不可实例化"><span class="nav-number">5.</span> <span class="nav-text">私有构造器强化不可实例化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免创建不必要的对象"><span class="nav-number">6.</span> <span class="nav-text">避免创建不必要的对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消除过期对象引用（内存泄漏）"><span class="nav-number">7.</span> <span class="nav-text">消除过期对象引用（内存泄漏）</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1065,6 +659,11 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/vendors/jquery-scrollintoview/jquery.scrollintoview.min.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
 
   
 
