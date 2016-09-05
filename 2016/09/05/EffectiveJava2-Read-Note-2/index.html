@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="VPN,内外网同时访问," />
+  <meta name="keywords" content="Effective Java,object," />
 
 
 
@@ -57,24 +57,34 @@
 
 
 
-<meta name="description" content="现象电脑通过VPN访问公司服务器的内网时无法访问互联网
-原因如果你电脑同时装了双网卡（包括无线网卡），且分别属于不直接相连的网段，此时如果在两个属性里都设了网关，Windows只认其中一个导致两个网段不能同时上。由于windows系统不支持共用路由问题（server级别除外），所以在同一时间不能同时上两个网。
-解决办法Windows也是有路由表的，只不过大家平时上网的时候大多数是用一块网卡，很少用">
+<meta name="description" content="覆盖equals遵守通用约定
+自反性
+对称性
+传递性
+一致性
+非空性 非null引用值x,x.equals(null)返回false
+判断Float或Double相等使用Float.compare或者Double.compare方法，因为存在Float.NaN/-0.0f以及类似的double常量">
 <meta property="og:type" content="article">
-<meta property="og:title" content="双网卡双网段路由设置同时访问内外网">
-<meta property="og:url" content="http://bollenchak.github.io/2016/01/28/双网卡双网段路由设置/index.html">
+<meta property="og:title" content="Effective Java -  对所有对象都通用的方法">
+<meta property="og:url" content="http://bollenchak.github.io/2016/09/05/EffectiveJava2-Read-Note-2/index.html">
 <meta property="og:site_name" content="Bollen's Notes">
-<meta property="og:description" content="现象电脑通过VPN访问公司服务器的内网时无法访问互联网
-原因如果你电脑同时装了双网卡（包括无线网卡），且分别属于不直接相连的网段，此时如果在两个属性里都设了网关，Windows只认其中一个导致两个网段不能同时上。由于windows系统不支持共用路由问题（server级别除外），所以在同一时间不能同时上两个网。
-解决办法Windows也是有路由表的，只不过大家平时上网的时候大多数是用一块网卡，很少用">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/4bfce457gw1f0f4h7cbr1j20o80h4n0j.jpg">
-<meta property="og:updated_time" content="2016-01-28T05:35:24.000Z">
+<meta property="og:description" content="覆盖equals遵守通用约定
+自反性
+对称性
+传递性
+一致性
+非空性 非null引用值x,x.equals(null)返回false
+判断Float或Double相等使用Float.compare或者Double.compare方法，因为存在Float.NaN/-0.0f以及类似的double常量">
+<meta property="og:updated_time" content="2016-09-05T07:40:21.448Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="双网卡双网段路由设置同时访问内外网">
-<meta name="twitter:description" content="现象电脑通过VPN访问公司服务器的内网时无法访问互联网
-原因如果你电脑同时装了双网卡（包括无线网卡），且分别属于不直接相连的网段，此时如果在两个属性里都设了网关，Windows只认其中一个导致两个网段不能同时上。由于windows系统不支持共用路由问题（server级别除外），所以在同一时间不能同时上两个网。
-解决办法Windows也是有路由表的，只不过大家平时上网的时候大多数是用一块网卡，很少用">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/4bfce457gw1f0f4h7cbr1j20o80h4n0j.jpg">
+<meta name="twitter:title" content="Effective Java -  对所有对象都通用的方法">
+<meta name="twitter:description" content="覆盖equals遵守通用约定
+自反性
+对称性
+传递性
+一致性
+非空性 非null引用值x,x.equals(null)返回false
+判断Float或Double相等使用Float.compare或者Double.compare方法，因为存在Float.NaN/-0.0f以及类似的double常量">
 
 
 
@@ -92,7 +102,7 @@
   };
 </script>
 
-  <title> 双网卡双网段路由设置同时访问内外网 | Bollen's Notes </title>
+  <title> Effective Java -  对所有对象都通用的方法 | Bollen's Notes </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -221,7 +231,7 @@
             
             
               
-                双网卡双网段路由设置同时访问内外网
+                Effective Java -  对所有对象都通用的方法
               
             
           </h1>
@@ -233,8 +243,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-28T10:38:19+08:00" content="2016-01-28">
-              2016-01-28
+            <time itemprop="dateCreated" datetime="2016-09-05T15:15:21+08:00" content="2016-09-05">
+              2016-09-05
             </time>
           </span>
 
@@ -247,8 +257,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/网络配置/" itemprop="url" rel="index">
-                    <span itemprop="name">网络配置</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -263,8 +273,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/01/28/双网卡双网段路由设置/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/28/双网卡双网段路由设置/" itemprop="commentsCount"></span>
+                <a href="/2016/09/05/EffectiveJava2-Read-Note-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/05/EffectiveJava2-Read-Note-2/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -286,47 +296,50 @@
       
 
       
-        <h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><p>电脑通过VPN访问公司服务器的内网时无法访问互联网</p>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>如果你电脑同时装了双网卡（包括无线网卡），且分别属于不直接相连的网段，此时如果在两个属性里都设了网关，<code>Windows</code>只认其中一个导致两<br>个网段不能同时上。由于<code>windows</code>系统不支持共用路由问题（<code>server</code>级别除外），所以在同一时间不能同时上两个网。</p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p><code>Windows</code>也是有路由表的，只不过大家平时上网的时候大多数是用一块网卡，很少用到路由概念</p>
-<p>如果是两块网卡，那就有两条默认路由，虽然两条默认路由的有着不同的<code>Metric</code>（Metric即跃点数，值越小优先级越高），然而windows还没聪明到能够首辨认哪条路由到外网网关，哪条路由到内网网关。它所能做的就是找一条路由作为全部数据包的出口，至于选择的对错与否，那它就不再过问了。</p>
-<p>那怎么办呢？办法就是人为操控windows的路由表，来告诉它，哪个网卡ip是走哪个网关。<br><a id="more"></a></p>
-<h3 id="VPN-TCP-IP高级设置"><a href="#VPN-TCP-IP高级设置" class="headerlink" title="VPN TCP/IP高级设置"></a>VPN TCP/IP高级设置</h3><p>设置<code>VPN</code>网络<code>TCP/IPv4</code>高级<code>IP</code>设置，取消勾选“<strong>在远程网络上使用默认网关</strong>”选项。</p>
-<p><img src="http://ww1.sinaimg.cn/large/4bfce457gw1f0f4h7cbr1j20o80h4n0j.jpg" alt="图例"></p>
-<h3 id="添加永久路由"><a href="#添加永久路由" class="headerlink" title="添加永久路由"></a>添加永久路由</h3><p>通过使用<code>route</code>命令内网地址永久性地默认通过内网网关</p>
-<p>例如网络情况如下：</p>
-<table>
-<thead>
-<tr>
-<th>IP</th>
-<th>子网掩码</th>
-<th>网关</th>
-<th>类型      </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>10.28.52.83</td>
-<td>255.255.255.0</td>
-<td>10.28.52.1</td>
-<td>内网</td>
-</tr>
-<tr>
-<td>172.16.16.138</td>
-<td>255.255.255.0</td>
-<td>172.16.16.1</td>
-<td>外网</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>打开<code>cmd</code>命令行窗口</li>
-<li>输入<code>route print</code>就可以看见windows路由表</li>
-<li>路由添加命令</li>
+        <h2 id="覆盖equals遵守通用约定"><a href="#覆盖equals遵守通用约定" class="headerlink" title="覆盖equals遵守通用约定"></a>覆盖equals遵守通用约定</h2><ul>
+<li>自反性</li>
+<li>对称性</li>
+<li>传递性</li>
+<li>一致性</li>
+<li>非空性 非<code>null</code>引用值<code>x</code>,<code>x.equals(null)</code>返回<code>false</code></li>
+<li>判断<code>Float</code>或<code>Double</code>相等使用<code>Float.compare</code>或者<code>Double.compare</code>方法，因为存在<code>Float.NaN/-0.0f</code>以及类似的<code>double</code>常量</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-p命令 永久保存</span></span><br><span class="line">route -p add 10.28.52.0 mask 255.255.255.0 10.28.52.1 </span><br><span class="line"><span class="comment">#外网没有设网关或者设置了自动获取的外网可以不加	</span></span><br><span class="line">route -p add 172.16.16.0   mask 255.255.255.0 172.16.16.1</span><br></pre></td></tr></table></figure>
-<p>如果需要删除添加的路由使用如下命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">route delete 10.28.52.0  删除添加的网关</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="覆盖equals时总要覆盖hashCode"><a href="#覆盖equals时总要覆盖hashCode" class="headerlink" title="覆盖equals时总要覆盖hashCode"></a>覆盖equals时总要覆盖hashCode</h2><ul>
+<li>相等的对象必须具有相等的散列码</li>
+<li>不相等的对象产生不相等的散列码</li>
+<li>覆盖<code>equals</code>方法不覆盖<code>hashCode</code>会导致:该类无法结合基于散列的所有集合(<code>HashMap/HashSet/HashTable</code>)正常工作</li>
+</ul>
+<h2 id="始终要覆盖toString"><a href="#始终要覆盖toString" class="headerlink" title="始终要覆盖toString"></a>始终要覆盖toString</h2><ul>
+<li><code>Object.toString</code>方法包含类名+“@”+散列码的十六进制表示法</li>
+<li>建议所有的子类都覆盖这个方法</li>
+<li><code>toString</code>方法需要提供详细的注释或者说明意图</li>
+<li><code>toString</code>返回值中所有信息，每个都要提供访问的方法</li>
+<li><code>toString</code>在文档中指定返回值的格式(有哪些关键的字段)，最好提供一个相匹配的静态工厂或者构造器（关键字段作为参数）。<br><code>java</code>平台类库中的<code>BigInteger/BigDecimal</code>和绝大多数的基本类型包装类都采取这种做法。</li>
+</ul>
+<h2 id="谨慎的覆盖clone"><a href="#谨慎的覆盖clone" class="headerlink" title="谨慎的覆盖clone"></a>谨慎的覆盖clone</h2><ul>
+<li><code>Cloneable</code>接口没有任何方法，如果类实现了<code>Caloneable</code>接口<code>Object</code>的<code>clone</code>方法就会该类的逐域拷贝，否则抛出<code>CloneNotSupportedException</code></li>
+<li>类每个域中包含一个基本类型的值或者一个指向不可变对象的引用，<code>super.clone()</code>返回即可<blockquote>
+<p>   不可变对象(Immutable Objects)即对象一旦被创建它的状态（对象的数据，也即对象属性值）就不能改变，反之即为可变对象(Mutable Objects)。<br>   不可变对象的类即为不可变类(Immutable Class)。Java平台类库中包含许多不可变类，如String、基本类型的包装类、BigInteger和BigDecimal等。</p>
+</blockquote>
+</li>
+<li>类包含的域引用了可变对象仅仅使用<code>super.clone</code>可能会导致灾难性的后果</li>
+<li><code>clone</code>架构与引用可变对象的<code>final</code>域的正常用法不兼容</li>
+<li>其他拷贝的办法：拷贝构造器或者拷贝工厂，唯一参数类型是包含该构造器的类<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">拷贝构造器：<span class="function"><span class="keyword">public</span> <span class="title">Yum</span><span class="params">(Yum yum)</span></span><br><span class="line">拷贝静态工厂：<span class="keyword">public</span> <span class="keyword">static</span> Yum <span class="title">newInstatnce</span><span class="params">(Yum yum)</span></span><br><span class="line">参数类型可以是该类实现的接口（转换构造器或转换工厂）允许客户选择拷贝的实现类型。例如参数为接口Set，可以把一个HashSet转换为TreeSet</span><br><span class="line">专家级程序员干脆从来不去覆盖clone方法</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="考虑实现Comparable接口"><a href="#考虑实现Comparable接口" class="headerlink" title="考虑实现Comparable接口"></a>考虑实现Comparable接口</h2><ul>
+<li><code>compareTo</code>并没有在<code>object</code>类中声明</li>
+<li>类实现了<code>Comparable</code>接口表明它的实例具有内在的排序关系</li>
+<li><code>Java</code>平台类库中所有的值类(<code>value classes</code> 实例表示一个值的类)都实现了<code>Comparable</code>接口</li>
+<li>自定义值类具有非常明显的内在排序关系需要实现这个接口</li>
+<li><code>compareTo</code>方法通常情况下返回结果应当和<code>equals</code>方法返回结果相同，即与<code>equals</code>一致<code>(consistent with equals)</code>。虽然绝非必要，但是违反此条件应当明确予以说明。</li>
+<li>与<code>equals</code>方法不一致<code>(inconsistent with equals)</code>，违反约定仍能正常工作。集合接口是按<code>equals</code>方法定义通用约定，但有序集合是按<code>compareTo</code>方法定义通用约定。如果不一致可能实例在不同的集合中比较结果不相等。<blockquote>
+<p>例如：new BigDecimal(“1.00”)与new BigDecimal(“1.0”)添加到HashSet中使用equals方法比较结果不想等。<br>但在TreeSet中使用compareTo方法比较是相等的。</p>
+</blockquote>
+</li>
+</ul>
+
       
     </div>
 
@@ -340,9 +353,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/VPN/" rel="tag">#VPN</a>
+            <a href="/tags/Effective-Java/" rel="tag">#Effective Java</a>
           
-            <a href="/tags/内外网同时访问/" rel="tag">#内外网同时访问</a>
+            <a href="/tags/object/" rel="tag">#object</a>
           
         </div>
       
@@ -351,17 +364,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/28/mybatis-merge-into/" rel="next" title="Mybatis 批量 foreach merge into用法">
-                <i class="fa fa-chevron-left"></i> Mybatis 批量 foreach merge into用法
+              <a href="/2016/09/02/EffectiveJava2-Read-Note-1/" rel="next" title="Effective Java - 创建和销毁对象">
+                <i class="fa fa-chevron-left"></i> Effective Java - 创建和销毁对象
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/20/eclipse-jadClipse-decompiler-config/" rel="prev" title="Eclipse反编译工具Jad.exe及插件JadClipse配置">
-                Eclipse反编译工具Jad.exe及插件JadClipse配置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -387,8 +396,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/01/28/双网卡双网段路由设置/"
-           data-title="双网卡双网段路由设置同时访问内外网" data-url="http://bollenchak.github.io/2016/01/28/双网卡双网段路由设置/">
+      <div class="ds-thread" data-thread-key="2016/09/05/EffectiveJava2-Read-Note-2/"
+           data-title="Effective Java -  对所有对象都通用的方法" data-url="http://bollenchak.github.io/2016/09/05/EffectiveJava2-Read-Note-2/">
       </div>
     
   </div>
@@ -487,7 +496,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#现象"><span class="nav-number">1.</span> <span class="nav-text">现象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原因"><span class="nav-number">2.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决办法"><span class="nav-number">3.</span> <span class="nav-text">解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VPN-TCP-IP高级设置"><span class="nav-number">3.1.</span> <span class="nav-text">VPN TCP/IP高级设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加永久路由"><span class="nav-number">3.2.</span> <span class="nav-text">添加永久路由</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#覆盖equals遵守通用约定"><span class="nav-number">1.</span> <span class="nav-text">覆盖equals遵守通用约定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#覆盖equals时总要覆盖hashCode"><span class="nav-number">2.</span> <span class="nav-text">覆盖equals时总要覆盖hashCode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#始终要覆盖toString"><span class="nav-number">3.</span> <span class="nav-text">始终要覆盖toString</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#谨慎的覆盖clone"><span class="nav-number">4.</span> <span class="nav-text">谨慎的覆盖clone</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#考虑实现Comparable接口"><span class="nav-number">5.</span> <span class="nav-text">考虑实现Comparable接口</span></a></li></ol></div>
             
           </div>
         </section>
