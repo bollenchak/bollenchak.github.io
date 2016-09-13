@@ -215,7 +215,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/05/EffectiveJava2-Read-Note-2/" itemprop="url">
+                <a class="post-title-link" href="/2016/09/13/EffectiveJava2-类和接口/" itemprop="url">
                   Effective Java -  对所有对象都通用的方法
                 </a>
               
@@ -229,8 +229,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-05T15:15:21+08:00" content="2016-09-05">
-              2016-09-05
+            <time itemprop="dateCreated" datetime="2016-09-13T19:16:21+08:00" content="2016-09-13">
+              2016-09-13
             </time>
           </span>
 
@@ -259,8 +259,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/09/05/EffectiveJava2-Read-Note-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/05/EffectiveJava2-Read-Note-2/" itemprop="commentsCount"></span>
+                <a href="/2016/09/13/EffectiveJava2-类和接口/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/13/EffectiveJava2-类和接口/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -283,16 +283,16 @@
 
       
         
-          <h2 id="覆盖equals遵守通用约定"><a href="#覆盖equals遵守通用约定" class="headerlink" title="覆盖equals遵守通用约定"></a>覆盖equals遵守通用约定</h2><ul>
-<li>自反性</li>
-<li>对称性</li>
-<li>传递性</li>
-<li>一致性</li>
-<li>非空性 非<code>null</code>引用值<code>x</code>,<code>x.equals(null)</code>返回<code>false</code></li>
-<li>判断<code>Float</code>或<code>Double</code>相等使用<code>Float.compare</code>或者<code>Double.compare</code>方法，因为存在<code>Float.NaN/-0.0f</code>以及类似的<code>double</code>常量</li>
+          <h2 id="使类和成员的可访问性最小化"><a href="#使类和成员的可访问性最小化" class="headerlink" title="使类和成员的可访问性最小化"></a>使类和成员的可访问性最小化</h2><ul>
+<li>良好的设计模块在于对外部的其他模块隐藏其内部数据和其他实现细节</li>
+<li>实体可访问性由实体声明所在的位置以及该实体声明中出现的访问修饰符决定</li>
+<li>降低不必要的公有类的可访问性</li>
+<li>类实现了<code>Serializable</code>接口有可能“泄漏”私有或包私有域</li>
+<li>覆盖父类的方法，子类中的访问级别就不应该低于父类中的访问级别</li>
+<li>除了公有静态<code>final</code>域以外，公有类都不应该包含公有域。并且要确保公有静态<code>final</code>域所引用的对象都是不可变的。</li>
 </ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/05/EffectiveJava2-Read-Note-2/#more" rel="contents">
+            <a class="btn" href="/2016/09/13/EffectiveJava2-类和接口/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -339,7 +339,131 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/02/EffectiveJava2-Read-Note-1/" itemprop="url">
+                <a class="post-title-link" href="/2016/09/05/EffectiveJava2-对所有对象都通用的方法/" itemprop="url">
+                  Effective Java -  对所有对象都通用的方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-05T15:15:21+08:00" content="2016-09-05">
+              2016-09-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/05/EffectiveJava2-对所有对象都通用的方法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/05/EffectiveJava2-对所有对象都通用的方法/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="覆盖equals遵守通用约定"><a href="#覆盖equals遵守通用约定" class="headerlink" title="覆盖equals遵守通用约定"></a>覆盖equals遵守通用约定</h2><ul>
+<li>自反性</li>
+<li>对称性</li>
+<li>传递性</li>
+<li>一致性</li>
+<li>非空性 非<code>null</code>引用值<code>x</code>,<code>x.equals(null)</code>返回<code>false</code></li>
+<li>判断<code>Float</code>或<code>Double</code>相等使用<code>Float.compare</code>或者<code>Double.compare</code>方法，因为存在<code>Float.NaN/-0.0f</code>以及类似的<code>double</code>常量</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/05/EffectiveJava2-对所有对象都通用的方法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/02/EffectiveJava2-创建和销毁对象/" itemprop="url">
                   Effective Java - 创建和销毁对象
                 </a>
               
@@ -383,8 +507,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/09/02/EffectiveJava2-Read-Note-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/02/EffectiveJava2-Read-Note-1/" itemprop="commentsCount"></span>
+                <a href="/2016/09/02/EffectiveJava2-创建和销毁对象/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/02/EffectiveJava2-创建和销毁对象/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -418,7 +542,7 @@
 <li>实际上和其他静态方法没有区别</li>
 </ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/02/EffectiveJava2-Read-Note-1/#more" rel="contents">
+            <a class="btn" href="/2016/09/02/EffectiveJava2-创建和销毁对象/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -975,7 +1099,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -992,7 +1116,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

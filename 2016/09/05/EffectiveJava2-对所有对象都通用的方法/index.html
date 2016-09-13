@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Eclipse,JadClipse,decompiler," />
+  <meta name="keywords" content="Effective Java,object," />
 
 
 
@@ -57,31 +57,34 @@
 
 
 
-<meta name="description" content="下载Eclipse插件及反编译程序
-JadClipse
-Jad
-
-配置Jad.exe  将Jad.exe复制到JDK安装目录下的bin文件夹下">
+<meta name="description" content="覆盖equals遵守通用约定
+自反性
+对称性
+传递性
+一致性
+非空性 非null引用值x,x.equals(null)返回false
+判断Float或Double相等使用Float.compare或者Double.compare方法，因为存在Float.NaN/-0.0f以及类似的double常量">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Eclipse反编译工具Jad.exe及插件JadClipse配置">
-<meta property="og:url" content="http://bollenchak.github.io/2016/04/20/eclipse-jadClipse-decompiler-config/index.html">
+<meta property="og:title" content="Effective Java -  对所有对象都通用的方法">
+<meta property="og:url" content="http://bollenchak.github.io/2016/09/05/EffectiveJava2-对所有对象都通用的方法/index.html">
 <meta property="og:site_name" content="Bollen's Notes">
-<meta property="og:description" content="下载Eclipse插件及反编译程序
-JadClipse
-Jad
-
-配置Jad.exe  将Jad.exe复制到JDK安装目录下的bin文件夹下">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/4bfce457gw1f342hpplizj20mw0lr79c.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/large/4bfce457gw1f342i72oyej20qq0lm44p.jpg">
-<meta property="og:updated_time" content="2016-04-21T01:33:17.281Z">
+<meta property="og:description" content="覆盖equals遵守通用约定
+自反性
+对称性
+传递性
+一致性
+非空性 非null引用值x,x.equals(null)返回false
+判断Float或Double相等使用Float.compare或者Double.compare方法，因为存在Float.NaN/-0.0f以及类似的double常量">
+<meta property="og:updated_time" content="2016-09-05T07:40:21.448Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Eclipse反编译工具Jad.exe及插件JadClipse配置">
-<meta name="twitter:description" content="下载Eclipse插件及反编译程序
-JadClipse
-Jad
-
-配置Jad.exe  将Jad.exe复制到JDK安装目录下的bin文件夹下">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/4bfce457gw1f342hpplizj20mw0lr79c.jpg">
+<meta name="twitter:title" content="Effective Java -  对所有对象都通用的方法">
+<meta name="twitter:description" content="覆盖equals遵守通用约定
+自反性
+对称性
+传递性
+一致性
+非空性 非null引用值x,x.equals(null)返回false
+判断Float或Double相等使用Float.compare或者Double.compare方法，因为存在Float.NaN/-0.0f以及类似的double常量">
 
 
 
@@ -99,7 +102,7 @@ Jad
   };
 </script>
 
-  <title> Eclipse反编译工具Jad.exe及插件JadClipse配置 | Bollen's Notes </title>
+  <title> Effective Java -  对所有对象都通用的方法 | Bollen's Notes </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -228,7 +231,7 @@ Jad
             
             
               
-                Eclipse反编译工具Jad.exe及插件JadClipse配置
+                Effective Java -  对所有对象都通用的方法
               
             
           </h1>
@@ -240,8 +243,8 @@ Jad
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-20T20:33:19+08:00" content="2016-04-20">
-              2016-04-20
+            <time itemprop="dateCreated" datetime="2016-09-05T15:15:21+08:00" content="2016-09-05">
+              2016-09-05
             </time>
           </span>
 
@@ -254,8 +257,8 @@ Jad
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/IDE/" itemprop="url" rel="index">
-                    <span itemprop="name">IDE</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -270,8 +273,8 @@ Jad
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/20/eclipse-jadClipse-decompiler-config/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/20/eclipse-jadClipse-decompiler-config/" itemprop="commentsCount"></span>
+                <a href="/2016/09/05/EffectiveJava2-对所有对象都通用的方法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/05/EffectiveJava2-对所有对象都通用的方法/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -293,19 +296,48 @@ Jad
       
 
       
-        <h2 id="下载Eclipse插件及反编译程序"><a href="#下载Eclipse插件及反编译程序" class="headerlink" title="下载Eclipse插件及反编译程序"></a>下载Eclipse插件及反编译程序</h2><ul>
-<li><a href="http://jadclipse.sourceforge.net/wiki/index.php/Main_Page#Download" target="_blank" rel="external">JadClipse</a></li>
-<li><a href="http://www.varaneckas.com/jad" target="_blank" rel="external">Jad</a></li>
+        <h2 id="覆盖equals遵守通用约定"><a href="#覆盖equals遵守通用约定" class="headerlink" title="覆盖equals遵守通用约定"></a>覆盖equals遵守通用约定</h2><ul>
+<li>自反性</li>
+<li>对称性</li>
+<li>传递性</li>
+<li>一致性</li>
+<li>非空性 非<code>null</code>引用值<code>x</code>,<code>x.equals(null)</code>返回<code>false</code></li>
+<li>判断<code>Float</code>或<code>Double</code>相等使用<code>Float.compare</code>或者<code>Double.compare</code>方法，因为存在<code>Float.NaN/-0.0f</code>以及类似的<code>double</code>常量</li>
 </ul>
-<h2 id="配置Jad-exe"><a href="#配置Jad-exe" class="headerlink" title="配置Jad.exe"></a>配置Jad.exe</h2><p>  将<code>Jad.exe</code>复制到<code>JDK</code>安装目录下的<code>bin</code>文件夹下</p>
 <a id="more"></a>
-<h2 id="安装Jadclipse插件到Eclipse"><a href="#安装Jadclipse插件到Eclipse" class="headerlink" title="安装Jadclipse插件到Eclipse"></a>安装Jadclipse插件到Eclipse</h2><ul>
-<li><code>net.sf.jadclipse_3.3.0.jar</code>复制到<code>Eclipse</code>安装目录下的<code>plugins</code>目录</li>
-<li>重启<code>Eclipse</code></li>
+<h2 id="覆盖equals时总要覆盖hashCode"><a href="#覆盖equals时总要覆盖hashCode" class="headerlink" title="覆盖equals时总要覆盖hashCode"></a>覆盖equals时总要覆盖hashCode</h2><ul>
+<li>相等的对象必须具有相等的散列码</li>
+<li>不相等的对象产生不相等的散列码</li>
+<li>覆盖<code>equals</code>方法不覆盖<code>hashCode</code>会导致:该类无法结合基于散列的所有集合(<code>HashMap/HashSet/HashTable</code>)正常工作</li>
 </ul>
-<h2 id="Eclipse配置"><a href="#Eclipse配置" class="headerlink" title="Eclipse配置"></a>Eclipse配置</h2><ul>
-<li>打开<code>Eclipse-&gt;Window-&gt;Preferences-&gt;Java</code>，打开<code>JadClipse</code>选项，配置如下<code>Path to decompiler</code> 这里写<code>jad.exe</code>的完整路径。例如：<code>C:\Program Files\Java\jdk1.6.0_31\bin\jad.exe</code><br><img src="http://ww1.sinaimg.cn/large/4bfce457gw1f342hpplizj20mw0lr79c.jpg" alt="">  </li>
-<li>更改<code>class</code>文件的默认打开方式：<code>Eclipse-&gt;Window-&gt;Preferences-&gt;General-&gt;Editors-&gt;File Associations</code>配置完成<br><img src="http://ww3.sinaimg.cn/large/4bfce457gw1f342i72oyej20qq0lm44p.jpg" alt=""></li>
+<h2 id="始终要覆盖toString"><a href="#始终要覆盖toString" class="headerlink" title="始终要覆盖toString"></a>始终要覆盖toString</h2><ul>
+<li><code>Object.toString</code>方法包含类名+“@”+散列码的十六进制表示法</li>
+<li>建议所有的子类都覆盖这个方法</li>
+<li><code>toString</code>方法需要提供详细的注释或者说明意图</li>
+<li><code>toString</code>返回值中所有信息，每个都要提供访问的方法</li>
+<li><code>toString</code>在文档中指定返回值的格式(有哪些关键的字段)，最好提供一个相匹配的静态工厂或者构造器（关键字段作为参数）。<br><code>java</code>平台类库中的<code>BigInteger/BigDecimal</code>和绝大多数的基本类型包装类都采取这种做法。</li>
+</ul>
+<h2 id="谨慎的覆盖clone"><a href="#谨慎的覆盖clone" class="headerlink" title="谨慎的覆盖clone"></a>谨慎的覆盖clone</h2><ul>
+<li><code>Cloneable</code>接口没有任何方法，如果类实现了<code>Caloneable</code>接口<code>Object</code>的<code>clone</code>方法就会该类的逐域拷贝，否则抛出<code>CloneNotSupportedException</code></li>
+<li>类每个域中包含一个基本类型的值或者一个指向不可变对象的引用，<code>super.clone()</code>返回即可<blockquote>
+<p>   不可变对象(Immutable Objects)即对象一旦被创建它的状态（对象的数据，也即对象属性值）就不能改变，反之即为可变对象(Mutable Objects)。<br>   不可变对象的类即为不可变类(Immutable Class)。Java平台类库中包含许多不可变类，如String、基本类型的包装类、BigInteger和BigDecimal等。</p>
+</blockquote>
+</li>
+<li>类包含的域引用了可变对象仅仅使用<code>super.clone</code>可能会导致灾难性的后果</li>
+<li><code>clone</code>架构与引用可变对象的<code>final</code>域的正常用法不兼容</li>
+<li>其他拷贝的办法：拷贝构造器或者拷贝工厂，唯一参数类型是包含该构造器的类<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">拷贝构造器：<span class="function"><span class="keyword">public</span> <span class="title">Yum</span><span class="params">(Yum yum)</span></span><br><span class="line">拷贝静态工厂：<span class="keyword">public</span> <span class="keyword">static</span> Yum <span class="title">newInstatnce</span><span class="params">(Yum yum)</span></span><br><span class="line">参数类型可以是该类实现的接口（转换构造器或转换工厂）允许客户选择拷贝的实现类型。例如参数为接口Set，可以把一个HashSet转换为TreeSet</span><br><span class="line">专家级程序员干脆从来不去覆盖clone方法</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="考虑实现Comparable接口"><a href="#考虑实现Comparable接口" class="headerlink" title="考虑实现Comparable接口"></a>考虑实现Comparable接口</h2><ul>
+<li><code>compareTo</code>并没有在<code>object</code>类中声明</li>
+<li>类实现了<code>Comparable</code>接口表明它的实例具有内在的排序关系</li>
+<li><code>Java</code>平台类库中所有的值类(<code>value classes</code> 实例表示一个值的类)都实现了<code>Comparable</code>接口</li>
+<li>自定义值类具有非常明显的内在排序关系需要实现这个接口</li>
+<li><code>compareTo</code>方法通常情况下返回结果应当和<code>equals</code>方法返回结果相同，即与<code>equals</code>一致<code>(consistent with equals)</code>。虽然绝非必要，但是违反此条件应当明确予以说明。</li>
+<li>与<code>equals</code>方法不一致<code>(inconsistent with equals)</code>，违反约定仍能正常工作。集合接口是按<code>equals</code>方法定义通用约定，但有序集合是按<code>compareTo</code>方法定义通用约定。如果不一致可能实例在不同的集合中比较结果不相等。<blockquote>
+<p>例如：new BigDecimal(“1.00”)与new BigDecimal(“1.0”)添加到HashSet中使用equals方法比较结果不想等。<br>但在TreeSet中使用compareTo方法比较是相等的。</p>
+</blockquote>
+</li>
 </ul>
 
       
@@ -321,11 +353,9 @@ Jad
       
         <div class="post-tags">
           
-            <a href="/tags/Eclipse/" rel="tag">#Eclipse</a>
+            <a href="/tags/Effective-Java/" rel="tag">#Effective Java</a>
           
-            <a href="/tags/JadClipse/" rel="tag">#JadClipse</a>
-          
-            <a href="/tags/decompiler/" rel="tag">#decompiler</a>
+            <a href="/tags/object/" rel="tag">#object</a>
           
         </div>
       
@@ -334,16 +364,16 @@ Jad
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/28/双网卡双网段路由设置/" rel="next" title="双网卡双网段路由设置同时访问内外网">
-                <i class="fa fa-chevron-left"></i> 双网卡双网段路由设置同时访问内外网
+              <a href="/2016/09/02/EffectiveJava2-创建和销毁对象/" rel="next" title="Effective Java - 创建和销毁对象">
+                <i class="fa fa-chevron-left"></i> Effective Java - 创建和销毁对象
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/02/EffectiveJava2-创建和销毁对象/" rel="prev" title="Effective Java - 创建和销毁对象">
-                Effective Java - 创建和销毁对象 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/13/EffectiveJava2-类和接口/" rel="prev" title="Effective Java -  对所有对象都通用的方法">
+                Effective Java -  对所有对象都通用的方法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -370,8 +400,8 @@ Jad
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/20/eclipse-jadClipse-decompiler-config/"
-           data-title="Eclipse反编译工具Jad.exe及插件JadClipse配置" data-url="http://bollenchak.github.io/2016/04/20/eclipse-jadClipse-decompiler-config/">
+      <div class="ds-thread" data-thread-key="2016/09/05/EffectiveJava2-对所有对象都通用的方法/"
+           data-title="Effective Java -  对所有对象都通用的方法" data-url="http://bollenchak.github.io/2016/09/05/EffectiveJava2-对所有对象都通用的方法/">
       </div>
     
   </div>
@@ -470,7 +500,7 @@ Jad
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载Eclipse插件及反编译程序"><span class="nav-number">1.</span> <span class="nav-text">下载Eclipse插件及反编译程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Jad-exe"><span class="nav-number">2.</span> <span class="nav-text">配置Jad.exe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Jadclipse插件到Eclipse"><span class="nav-number">3.</span> <span class="nav-text">安装Jadclipse插件到Eclipse</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Eclipse配置"><span class="nav-number">4.</span> <span class="nav-text">Eclipse配置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#覆盖equals遵守通用约定"><span class="nav-number">1.</span> <span class="nav-text">覆盖equals遵守通用约定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#覆盖equals时总要覆盖hashCode"><span class="nav-number">2.</span> <span class="nav-text">覆盖equals时总要覆盖hashCode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#始终要覆盖toString"><span class="nav-number">3.</span> <span class="nav-text">始终要覆盖toString</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#谨慎的覆盖clone"><span class="nav-number">4.</span> <span class="nav-text">谨慎的覆盖clone</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#考虑实现Comparable接口"><span class="nav-number">5.</span> <span class="nav-text">考虑实现Comparable接口</span></a></li></ol></div>
             
           </div>
         </section>
