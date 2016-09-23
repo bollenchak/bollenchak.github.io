@@ -73,7 +73,7 @@
 
 在类进行编译时编译器自动进行类型转换，并且在编译时告知是否插入类型错误的对象，并在运行时擦除它们的元素类型。
 泛">
-<meta property="og:updated_time" content="2016-09-23T07:07:56.258Z">
+<meta property="og:updated_time" content="2016-09-23T07:14:44.921Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Effective Java - 泛型">
 <meta name="twitter:description" content="泛型
@@ -415,7 +415,9 @@
 <ol>
 <li>不要再返回值类型里使用通配符类型，它会强制用户在客户端代码中使用通配符类型</li>
 </ol>
-<p>不使用通配符类型，进行类型推导十分麻烦。但是不加编译会报错<figure class="highlight plain"><figcaption><span>types``` ，幸运的是可以通过**显式的类型参数**来告诉它要使用哪种类型。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">例如：</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">//返回通配符类型的方法</span><br><span class="line">private static &lt;E&gt; Set&lt;? extends E&gt; union(Set&lt;? extends E&gt; s1, Set&lt;? extends E&gt; s2)&#123;...&#125;</span><br><span class="line">//两个参数</span><br><span class="line">Set&lt;Integer&gt; integers  = ...;</span><br><span class="line">Set&lt;Double&gt; doubles = ...;</span><br><span class="line">//类型推导不知道结果该为Number呢、还是Number的子类们呢</span><br><span class="line">//所以类型推导编译会报错 incompatible types</span><br><span class="line">Set&lt;Number&gt; numbers=  union(integers,doubles);</span><br><span class="line">//显式类型参数指定，虽然不优雅，但这样就不会报错了</span><br><span class="line">Set&lt;Number&gt; number = Union.&lt;Number&gt;union(integers,doubles);</span><br></pre></td></tr></table></figure></p>
+<p>不使用通配符类型，进行类型推导十分麻烦。但是不加编译会报错<code>incompatible types</code>，幸运的是可以通过<strong>显式的类型参数</strong>来告诉它要使用哪种类型。</p>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回通配符类型的方法</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> &lt;E&gt; Set&lt;? extends E&gt; union(Set&lt;? extends E&gt; s1, Set&lt;? extends E&gt; s2)&#123;...&#125;</span><br><span class="line"><span class="comment">//两个参数</span></span><br><span class="line">Set&lt;Integer&gt; integers  = ...;</span><br><span class="line">Set&lt;Double&gt; doubles = ...;</span><br><span class="line"><span class="comment">//类型推导不知道结果该为Number呢、还是Number的子类们呢</span></span><br><span class="line"><span class="comment">//所以类型推导编译会报错 incompatible types</span></span><br><span class="line">Set&lt;Number&gt; numbers=  union(integers,doubles);</span><br><span class="line"><span class="comment">//显式类型参数指定，虽然不优雅，但这样就不会报错了</span></span><br><span class="line">Set&lt;Number&gt; number = Union.&lt;Number&gt;union(integers,doubles);</span><br></pre></td></tr></table></figure>
 <ol>
 <li>类型参数和通配符具有双重性，许多方法都可选其一进行声明</li>
 </ol>
