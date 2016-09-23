@@ -215,6 +215,176 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/22/EffectiveJava2-泛型/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-22T14:52:21+08:00" content="2016-09-22">
+              2016-09-22
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/22/EffectiveJava2-泛型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/22/EffectiveJava2-泛型/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>title: Effective Java - 泛型<br>date: 2016-09-22 21:16:21<br>categories: java</p>
+<h2 id="tags-Effective-Java-class-interface"><a href="#tags-Effective-Java-class-interface" class="headerlink" title="tags: [Effective Java,class,interface]"></a>tags: [Effective Java,class,interface]</h2><h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><blockquote>
+<p>声明中具有一个或多个类型参数的类或者接口，称之为泛型(generic)类或接口。泛型类和泛型接口统称为泛型(generic type)</p>
+<p>每个泛型都有一个原生态类型(raw type)，即不带任何实际类型参数的泛型名称。例如：List<E>对应的原生态类型是List。</p>
+</blockquote>
+<p>在类进行编译时编译器自动进行类型转换，并且在编译时告知是否插入类型错误的对象，并在运行时擦除它们的元素类型。</p>
+<p><em>泛型相关术语</em></p>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>实例</th>
+<th>所在条目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>参数化的类型</td>
+<td>List<String></td>
+<td>第23条</td>
+</tr>
+<tr>
+<td>实际类型参数</td>
+<td>String</td>
+<td>第23条</td>
+</tr>
+<tr>
+<td>泛型</td>
+<td>List<E></td>
+<td>第23、26条</td>
+</tr>
+<tr>
+<td>形式类型参数</td>
+<td>E</td>
+<td>第23条</td>
+</tr>
+<tr>
+<td>无限制通配符类型</td>
+<td>List&lt;?&gt;</td>
+<td>第23条</td>
+</tr>
+<tr>
+<td>原生态类型</td>
+<td>List</td>
+<td>第23条</td>
+</tr>
+<tr>
+<td>有限制类型参数</td>
+<td><E extends Number></td>
+<td>第26条</td>
+</tr>
+<tr>
+<td>递归类型参数</td>
+<td><T extends Comparable<T>&gt;</td>
+<td>第27条</td>
+</tr>
+<tr>
+<td>有限制通配符类型</td>
+<td>List&lt;? extends Number&gt;</td>
+<td>第28条</td>
+</tr>
+<tr>
+<td>泛型方法</td>
+<td>static <E> List<E> asList(E[] a)</td>
+<td>第27条</td>
+</tr>
+<tr>
+<td>类型令牌</td>
+<td>String.class</td>
+<td>第29条</td>
+</tr>
+</tbody>
+</table>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/22/EffectiveJava2-泛型/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/13/EffectiveJava2-类和接口/" itemprop="url">
                   Effective Java -  对所有对象都通用的方法
                 </a>
@@ -1099,7 +1269,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
