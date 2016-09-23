@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Effective Java,class,interface," />
 
 
 
@@ -57,25 +57,31 @@
 
 
 
-<meta name="description" content="title: Effective Java - 泛型date: 2016-09-22 21:16:21categories: java
-tags: [Effective Java,class,interface]泛型
+<meta name="description" content="泛型
 声明中具有一个或多个类型参数的类或者接口，称之为泛型(generic)类或接口。泛型类和泛型接口统称为泛型(generic type)
-每个泛型都有一个原生态类型(raw type)">
+每个泛型都有一个原生态类型(raw type)，即不带任何实际类型参数的泛型名称。例如：List对应的原生态类型是List。
+
+在类进行编译时编译器自动进行类型转换，并且在编译时告知是否插入类型错误的对象，并在运行时擦除它们的元素类型。
+泛型相关术语">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Bollen's Notes">
+<meta property="og:title" content="Effective Java - 泛型">
 <meta property="og:url" content="http://bollenchak.github.io/2016/09/22/EffectiveJava2-泛型/index.html">
 <meta property="og:site_name" content="Bollen's Notes">
-<meta property="og:description" content="title: Effective Java - 泛型date: 2016-09-22 21:16:21categories: java
-tags: [Effective Java,class,interface]泛型
+<meta property="og:description" content="泛型
 声明中具有一个或多个类型参数的类或者接口，称之为泛型(generic)类或接口。泛型类和泛型接口统称为泛型(generic type)
-每个泛型都有一个原生态类型(raw type)">
-<meta property="og:updated_time" content="2016-09-23T05:59:28.336Z">
+每个泛型都有一个原生态类型(raw type)，即不带任何实际类型参数的泛型名称。例如：List对应的原生态类型是List。
+
+在类进行编译时编译器自动进行类型转换，并且在编译时告知是否插入类型错误的对象，并在运行时擦除它们的元素类型。
+泛型相关术语">
+<meta property="og:updated_time" content="2016-09-23T06:07:16.761Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Bollen's Notes">
-<meta name="twitter:description" content="title: Effective Java - 泛型date: 2016-09-22 21:16:21categories: java
-tags: [Effective Java,class,interface]泛型
+<meta name="twitter:title" content="Effective Java - 泛型">
+<meta name="twitter:description" content="泛型
 声明中具有一个或多个类型参数的类或者接口，称之为泛型(generic)类或接口。泛型类和泛型接口统称为泛型(generic type)
-每个泛型都有一个原生态类型(raw type)">
+每个泛型都有一个原生态类型(raw type)，即不带任何实际类型参数的泛型名称。例如：List对应的原生态类型是List。
+
+在类进行编译时编译器自动进行类型转换，并且在编译时告知是否插入类型错误的对象，并在运行时擦除它们的元素类型。
+泛型相关术语">
 
 
 
@@ -93,7 +99,7 @@ tags: [Effective Java,class,interface]泛型
   };
 </script>
 
-  <title>  | Bollen's Notes </title>
+  <title> Effective Java - 泛型 | Bollen's Notes </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -222,7 +228,7 @@ tags: [Effective Java,class,interface]泛型
             
             
               
-                
+                Effective Java - 泛型
               
             
           </h1>
@@ -234,11 +240,30 @@ tags: [Effective Java,class,interface]泛型
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-22T14:52:21+08:00" content="2016-09-22">
+            <time itemprop="dateCreated" datetime="2016-09-22T21:16:21+08:00" content="2016-09-22">
               2016-09-22
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -268,8 +293,7 @@ tags: [Effective Java,class,interface]泛型
       
 
       
-        <p>title: Effective Java - 泛型<br>date: 2016-09-22 21:16:21<br>categories: java</p>
-<h2 id="tags-Effective-Java-class-interface"><a href="#tags-Effective-Java-class-interface" class="headerlink" title="tags: [Effective Java,class,interface]"></a>tags: [Effective Java,class,interface]</h2><h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><blockquote>
+        <h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><blockquote>
 <p>声明中具有一个或多个类型参数的类或者接口，称之为泛型(generic)类或接口。泛型类和泛型接口统称为泛型(generic type)</p>
 <p>每个泛型都有一个原生态类型(raw type)，即不带任何实际类型参数的泛型名称。例如：List<e>对应的原生态类型是List。</e></p>
 </blockquote>
@@ -426,6 +450,16 @@ tags: [Effective Java,class,interface]泛型
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Effective-Java/" rel="tag">#Effective Java</a>
+          
+            <a href="/tags/class/" rel="tag">#class</a>
+          
+            <a href="/tags/interface/" rel="tag">#interface</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
@@ -464,7 +498,7 @@ tags: [Effective Java,class,interface]泛型
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/09/22/EffectiveJava2-泛型/"
-           data-title="" data-url="http://bollenchak.github.io/2016/09/22/EffectiveJava2-泛型/">
+           data-title="Effective Java - 泛型" data-url="http://bollenchak.github.io/2016/09/22/EffectiveJava2-泛型/">
       </div>
     
   </div>
@@ -563,7 +597,7 @@ tags: [Effective Java,class,interface]泛型
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags-Effective-Java-class-interface"><span class="nav-number">1.</span> <span class="nav-text">tags: [Effective Java,class,interface]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#泛型"><span class="nav-number"></span> <span class="nav-text">泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第23条-不要再新代码中使用原生态类型"><span class="nav-number">1.</span> <span class="nav-text">第23条 不要再新代码中使用原生态类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第24条-消除非受检的警告"><span class="nav-number">2.</span> <span class="nav-text">第24条 消除非受检的警告</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第25条-泛型列表优先于泛型数组"><span class="nav-number">3.</span> <span class="nav-text">第25条 泛型列表优先于泛型数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例外"><span class="nav-number">3.1.</span> <span class="nav-text">例外</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第26条-优先考虑泛型"><span class="nav-number">4.</span> <span class="nav-text">第26条 优先考虑泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类泛型化的步骤"><span class="nav-number">4.1.</span> <span class="nav-text">类泛型化的步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#泛型化的优势"><span class="nav-number">4.2.</span> <span class="nav-text">泛型化的优势</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第27条-优先考虑泛型方法"><span class="nav-number">5.</span> <span class="nav-text">第27条 优先考虑泛型方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第28条-利用有限制通配符来提升API的灵活性"><span class="nav-number">6.</span> <span class="nav-text">第28条 利用有限制通配符来提升API的灵活性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第29条-优先考虑类型安全的异构容器"><span class="nav-number">7.</span> <span class="nav-text">第29条 优先考虑类型安全的异构容器</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#泛型"><span class="nav-number">1.</span> <span class="nav-text">泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第23条-不要再新代码中使用原生态类型"><span class="nav-number">1.1.</span> <span class="nav-text">第23条 不要再新代码中使用原生态类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第24条-消除非受检的警告"><span class="nav-number">1.2.</span> <span class="nav-text">第24条 消除非受检的警告</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第25条-泛型列表优先于泛型数组"><span class="nav-number">1.3.</span> <span class="nav-text">第25条 泛型列表优先于泛型数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例外"><span class="nav-number">1.3.1.</span> <span class="nav-text">例外</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第26条-优先考虑泛型"><span class="nav-number">1.4.</span> <span class="nav-text">第26条 优先考虑泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类泛型化的步骤"><span class="nav-number">1.4.1.</span> <span class="nav-text">类泛型化的步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#泛型化的优势"><span class="nav-number">1.4.2.</span> <span class="nav-text">泛型化的优势</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第27条-优先考虑泛型方法"><span class="nav-number">1.5.</span> <span class="nav-text">第27条 优先考虑泛型方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第28条-利用有限制通配符来提升API的灵活性"><span class="nav-number">1.6.</span> <span class="nav-text">第28条 利用有限制通配符来提升API的灵活性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第29条-优先考虑类型安全的异构容器"><span class="nav-number">1.7.</span> <span class="nav-text">第29条 优先考虑类型安全的异构容器</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
