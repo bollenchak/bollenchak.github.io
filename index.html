@@ -285,7 +285,7 @@
         
           <h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><blockquote>
 <p>声明中具有一个或多个类型参数的类或者接口，称之为泛型(generic)类或接口。泛型类和泛型接口统称为泛型(generic type)</p>
-<p>每个泛型都有一个原生态类型(raw type)，即不带任何实际类型参数的泛型名称。例如：List\<E\>对应的原生态类型是List。</p>
+<p>每个泛型都有一个原生态类型(raw type)，即不带任何实际类型参数的泛型名称。例如：List&amp;ltE&amp;gt对应的原生态类型是List。</p>
 </blockquote>
 <p>在类进行编译时编译器自动进行类型转换，并且在编译时告知是否插入类型错误的对象，并在运行时擦除它们的元素类型。</p>
 <p><em>泛型相关术语</em></p>
@@ -300,7 +300,7 @@
 <tbody>
 <tr>
 <td>参数化的类型</td>
-<td>List\<String\></td>
+<td>List&amp;ltString&amp;gt</td>
 <td>第23条</td>
 </tr>
 <tr>
@@ -310,7 +310,7 @@
 </tr>
 <tr>
 <td>泛型</td>
-<td>List\<E\></td>
+<td>List&amp;ltE&amp;gt</td>
 <td>第23、26条</td>
 </tr>
 <tr>
@@ -320,7 +320,7 @@
 </tr>
 <tr>
 <td>无限制通配符类型</td>
-<td>List\&lt;?></td>
+<td>List&amp;lt?&amp;gt</td>
 <td>第23条</td>
 </tr>
 <tr>
@@ -330,22 +330,22 @@
 </tr>
 <tr>
 <td>有限制类型参数</td>
-<td>\<E extends Number\></td>
+<td>&amp;ltE extends Number&amp;gt</td>
 <td>第26条</td>
 </tr>
 <tr>
 <td>递归类型参数</td>
-<td>\<T extends Comparable\<T\>></td>
+<td>&amp;ltT extends Comparable&amp;ltT&amp;gt&amp;gt</td>
 <td>第27条</td>
 </tr>
 <tr>
 <td>有限制通配符类型</td>
-<td>List\&lt;? extends Number></td>
+<td>List&amp;lt? extends Number&amp;gt</td>
 <td>第28条</td>
 </tr>
 <tr>
 <td>泛型方法</td>
-<td>static \<E\> List\<E\> asList(E[] a)</td>
+<td>static &amp;ltE&amp;gt List&amp;ltE&amp;gt asList(E[] a)</td>
 <td>第27条</td>
 </tr>
 <tr>
