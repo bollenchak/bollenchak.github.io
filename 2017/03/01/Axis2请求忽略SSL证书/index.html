@@ -1,0 +1,604 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Axis,证书,https,SSL," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="技术背景客户端在使用HTTPS方式与Web服务器通信时有以下几个步骤，如图所示
+现象业务上需要通过axis基于HTTPS调用某服务商的WSO2 server，但是服务方并没有提供证书，因此调用时会抛出异常如下：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Axis2请求忽略SSL证书信任">
+<meta property="og:url" content="http://bollenchak.github.io/2017/03/01/Axis2请求忽略SSL证书/index.html">
+<meta property="og:site_name" content="Bollen's Notes">
+<meta property="og:description" content="技术背景客户端在使用HTTPS方式与Web服务器通信时有以下几个步骤，如图所示
+现象业务上需要通过axis基于HTTPS调用某服务商的WSO2 server，但是服务方并没有提供证书，因此调用时会抛出异常如下：">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/4bfce457gw1f0f4h7cbr1j20o80h4n0j.jpg">
+<meta property="og:updated_time" content="2017-03-01T10:33:01.206Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Axis2请求忽略SSL证书信任">
+<meta name="twitter:description" content="技术背景客户端在使用HTTPS方式与Web服务器通信时有以下几个步骤，如图所示
+现象业务上需要通过axis基于HTTPS调用某服务商的WSO2 server，但是服务方并没有提供证书，因此调用时会抛出异常如下：">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/4bfce457gw1f0f4h7cbr1j20o80h4n0j.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Axis2请求忽略SSL证书信任 | Bollen's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-75849261-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Bollen's Notes</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Write Technology Record</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Axis2请求忽略SSL证书信任
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-01T17:38:19+08:00" content="2017-03-01">
+              2017-03-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/webservice/" itemprop="url" rel="index">
+                    <span itemprop="name">webservice,</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/01/Axis2请求忽略SSL证书/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/01/Axis2请求忽略SSL证书/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="技术背景"><a href="#技术背景" class="headerlink" title="技术背景"></a>技术背景</h2><p>客户端在使用HTTPS方式与Web服务器通信时有以下几个步骤，如图所示<br><img src="http://ww1.sinaimg.cn/large/4bfce457gw1f0f4h7cbr1j20o80h4n0j.jpg" alt="HTTPS通信过程"></p>
+<h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><p>业务上需要通过axis基于HTTPS调用某服务商的<code>WSO2 server</code>，但是服务方并没有提供证书，因此调用时会抛出异常如下：<br><a id="more"></a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">org.apache.axis2.AxisFault: Connection has been shutdown: javax.net.ssl.SSLHandshakeException: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target</span><br><span class="line">        at org.apache.axis2.AxisFault.makeFault(AxisFault.java:<span class="number">430</span>)</span><br><span class="line">        at org.apache.axis2.transport.http.SOAPMessageFormatter.writeTo(SOAPMessageFormatter.java:<span class="number">78</span>)</span><br><span class="line">        at org.apache.axis2.transport.http.AxisRequestEntity.writeRequest(AxisRequestEntity.java:<span class="number">84</span>)</span><br><span class="line">        at org.apache.commons.httpclient.methods.EntityEnclosingMethod.writeRequestBody(EntityEnclosingMethod.java:<span class="number">499</span>)</span><br><span class="line">        at org.apache.commons.httpclient.HttpMethodBase.writeRequest(HttpMethodBase.java:<span class="number">2114</span>)</span><br><span class="line">        at org.apache.commons.httpclient.HttpMethodBase.execute(HttpMethodBase.java:<span class="number">1096</span>)</span><br><span class="line">        at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:<span class="number">398</span>)</span><br><span class="line">        at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:<span class="number">171</span>)</span><br><span class="line">        at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:<span class="number">397</span>)</span><br><span class="line">        at org.apache.axis2.transport.http.AbstractHTTPSender.executeMethod(AbstractHTTPSender.java:<span class="number">621</span>)</span><br><span class="line">        at org.apache.axis2.transport.http.HTTPSender.sendViaPost(HTTPSender.java:<span class="number">193</span>)</span><br><span class="line">        at org.apache.axis2.transport.http.HTTPSender.send(HTTPSender.java:<span class="number">75</span>)</span><br><span class="line">        at org.apache.axis2.transport.http.CommonsHTTPTransportSender.writeMessageWithCommons(CommonsHTTPTransportSender.java:<span class="number">404</span>)</span><br><span class="line">        at org.apache.axis2.transport.http.CommonsHTTPTransportSender.invoke(CommonsHTTPTransportSender.java:<span class="number">231</span>)</span><br><span class="line">        at org.apache.axis2.engine.AxisEngine.send(AxisEngine.java:<span class="number">443</span>)</span><br><span class="line">        at org.apache.axis2.description.OutInAxisOperationClient.send(OutInAxisOperation.java:<span class="number">406</span>)</span><br><span class="line">        at org.apache.axis2.description.OutInAxisOperationClient.executeImpl(OutInAxisOperation.java:<span class="number">229</span>)</span><br><span class="line">        at org.apache.axis2.client.OperationClient.execute(OperationClient.java:<span class="number">165</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ul>
+<li><p>配置证书<br>  配置trustStore文件并导入</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String ssl = Settings.getString(<span class="string">"ssl.trustStore.path"</span>);</span><br><span class="line">    System.setProperty(<span class="string">"javax.net.ssl.trustStore"</span>, ssl);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>忽略证书信任<br>  通过Google查了很多忽略证书信任的文章，例如如下<code>SslUtils</code>忽略<code>ssl</code>的办法。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.emchat.example.httpclient.utils;  </span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> java.security.cert.CertificateException;  </span><br><span class="line"><span class="keyword">import</span> java.security.cert.X509Certificate;  </span><br><span class="line">   </span><br><span class="line"><span class="keyword">import</span> javax.net.ssl.HostnameVerifier;  </span><br><span class="line"><span class="keyword">import</span> javax.net.ssl.HttpsURLConnection;  </span><br><span class="line"><span class="keyword">import</span> javax.net.ssl.SSLContext;  </span><br><span class="line"><span class="keyword">import</span> javax.net.ssl.SSLSession;  </span><br><span class="line"><span class="keyword">import</span> javax.net.ssl.TrustManager;  </span><br><span class="line"><span class="keyword">import</span> javax.net.ssl.X509TrustManager;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SslUtils</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">trustAllHttpsCertificates</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;  </span><br><span class="line">    TrustManager[] trustAllCerts = <span class="keyword">new</span> TrustManager[<span class="number">1</span>];  </span><br><span class="line">    TrustManager tm = <span class="keyword">new</span> miTM();  </span><br><span class="line">    trustAllCerts[<span class="number">0</span>] = tm;  </span><br><span class="line">    SSLContext sc = SSLContext.getInstance(<span class="string">"SSL"</span>);  </span><br><span class="line">    sc.init(<span class="keyword">null</span>, trustAllCerts, <span class="keyword">null</span>);  </span><br><span class="line">    HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">miTM</span> <span class="keyword">implements</span> <span class="title">TrustManager</span>,<span class="title">X509TrustManager</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">public</span> X509Certificate[] getAcceptedIssuers() &#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isServerTrusted</span><span class="params">(X509Certificate[] certs)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isClientTrusted</span><span class="params">(X509Certificate[] certs)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">checkServerTrusted</span><span class="params">(X509Certificate[] certs, String authType)</span>  </span><br><span class="line">            <span class="keyword">throws</span> CertificateException </span>&#123;  </span><br><span class="line">        <span class="keyword">return</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">checkClientTrusted</span><span class="params">(X509Certificate[] certs, String authType)</span>  </span><br><span class="line">            <span class="keyword">throws</span> CertificateException </span>&#123;  </span><br><span class="line">        <span class="keyword">return</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">   </span><br><span class="line"><span class="comment">/** </span><br><span class="line"> * 忽略HTTPS请求的SSL证书，必须在openConnection之前调用 </span><br><span class="line"> * <span class="doctag">@throws</span> Exception </span><br><span class="line"> */</span>  </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ignoreSsl</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;  </span><br><span class="line">    HostnameVerifier hv = <span class="keyword">new</span> HostnameVerifier() &#123;  </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">verify</span><span class="params">(String urlHostName, SSLSession session)</span> </span>&#123;  </span><br><span class="line">            System.out.println(<span class="string">"Warning: URL Host: "</span> + urlHostName + <span class="string">" vs. "</span> + session.getPeerHost());  </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;;  </span><br><span class="line">    trustAllHttpsCertificates();  </span><br><span class="line">    HttpsURLConnection.setDefaultHostnameVerifier(hv);  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  这些大多是<code>HttpsURLConnection</code>的忽略办法,由于Axis2的客户端并不是基于<code>HttpsURLConnection</code>的忽略信任，因此需要如下设置</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SSLContext <span class="title">getSSLContext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	TrustManager[] customTrustManager = <span class="keyword">new</span> TrustManager[] &#123; <span class="keyword">new</span> X509TrustManager() &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">public</span> java.security.cert.X509Certificate[] getAcceptedIssuers() &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">checkClientTrusted</span><span class="params">(X509Certificate[] certs, String authType)</span> </span>&#123;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">checkServerTrusted</span><span class="params">(X509Certificate[] certs, String authType)</span> </span>&#123;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; &#125;;</span><br><span class="line">	SSLContext sslCtx = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		sslCtx = SSLContext.getInstance(<span class="string">"SSL"</span>);</span><br><span class="line">		sslCtx.init(<span class="keyword">null</span>, customTrustManager, <span class="keyword">null</span>);</span><br><span class="line">	&#125; <span class="keyword">catch</span> (NoSuchAlgorithmException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (KeyManagementException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> sslCtx;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Stub._getServiceClient().getOptions().setProperty(HTTPConstants.CUSTOM_PROTOCOL_HANDLER,</span><br><span class="line">				<span class="keyword">new</span> Protocol(<span class="string">"https"</span>, <span class="keyword">new</span> SSLProtocolSocketFactory(getSSLContext()), <span class="number">443</span>));</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>(How to ignore trust store when connecting to a WSO2 server)[<a href="https://asitha.github.io/cs/programming/gotchas/wso2/2015/02/25/ignore-trust-store-when-connecting-to-wso2-server/" target="_blank" rel="external">https://asitha.github.io/cs/programming/gotchas/wso2/2015/02/25/ignore-trust-store-when-connecting-to-wso2-server/</a>]<br>(java在访问https资源时，忽略证书信任问题)[<a href="http://blog.csdn.net/lizeyang/article/details/18983843" target="_blank" rel="external">http://blog.csdn.net/lizeyang/article/details/18983843</a>]</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Axis/" rel="tag">#Axis</a>
+          
+            <a href="/tags/证书/" rel="tag">#证书</a>
+          
+            <a href="/tags/https/" rel="tag">#https</a>
+          
+            <a href="/tags/SSL/" rel="tag">#SSL</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/22/EffectiveJava2-泛型/" rel="next" title="Effective Java - 泛型">
+                <i class="fa fa-chevron-left"></i> Effective Java - 泛型
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/01/Axis2请求忽略SSL证书/"
+           data-title="Axis2请求忽略SSL证书信任" data-url="http://bollenchak.github.io/2017/03/01/Axis2请求忽略SSL证书/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars3.githubusercontent.com/u/5812295?v=3&s=460"
+               alt="Bollen" />
+          <p class="site-author-name" itemprop="name">Bollen</p>
+          <p class="site-description motion-element" itemprop="description">日拱一卒，不求速进</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#技术背景"><span class="nav-number">1.</span> <span class="nav-text">技术背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#现象"><span class="nav-number">2.</span> <span class="nav-text">现象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决办法"><span class="nav-number">3.</span> <span class="nav-text">解决办法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bollen</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/vendors/jquery-scrollintoview/jquery.scrollintoview.min.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"bollen"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
